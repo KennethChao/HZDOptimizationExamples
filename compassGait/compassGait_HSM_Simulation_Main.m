@@ -71,20 +71,24 @@ psi = 2.87/180*pi;
         plot(ret_x(:,1),ret_x(:,3),'b')
         hold on
         plot(ret_x(:,2),ret_x(:,4),'r')
-        sprintf("%d",i)
+        fprintf("%dth step, step time = %.3f\n",i,ret_t(end))
         end
         
         plot(q(1,:),dq(1,:))
         hold on 
         plot(q(2,:),dq(2,:))
         hold off
-        
+        title('phase portrait vs. optimization result')
+        xlabel('rad')
+        ylabel('rad/s')        
         
         figure()
         plot(t, q(1,:)-q(2,:))
         hold on 
         plot(ret_t, ret_x(:,1)-ret_x(:,2))
-       
+        xlabel('time')
+        ylabel('y = q_1-q_2(rad)')
+        legend('y_d','y_a')
         
 function dx =  calcEOM(t,x,p)
     q1 = x(1);
